@@ -2,4 +2,4 @@
 
 ---
 
-<img src="Assets/Simplificada.png" >
+<img src="Assets/Simplificada.png" width="500" >
