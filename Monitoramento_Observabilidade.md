@@ -63,6 +63,3 @@ Trace: tx_abc123 (root)
 - Identificação precisa de gargalos (ex: Redis lento em específico shard)
 - Correlação de erros (ex: falha no ML traceada até feature específica)
 - Análise de performance por caminho (hot path vs warm path)
-
-Resumo Visual da Arquitetura
-
