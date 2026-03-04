@@ -1,4 +1,4 @@
-### 3.1 Mensageria e Streaming
+### 1 Mensageria e Streaming
 
 Table
 
@@ -13,7 +13,7 @@ Table
 - `transactions.raw`: 72 partições, RF\=3, min.insync.replicas\=2, retention\=7 dias
 - `fraud.alerts`: 12 partições, RF\=3, compression\=snappy
 
-### 3.2 Armazenamento em Memória (Hot Path)
+### 2 Armazenamento em Memória (Hot Path)
 
 Table
 
@@ -30,7 +30,7 @@ Table
 - `GEOADD card:locations`: Indexação geospatial para detecção de velocidade impossível
 - `TS.ADD user:spending`: Time-series de valores para cálculo de z-scores
 
-### 3.3 Bancos de Dados Persistentes
+### 3 Bancos de Dados Persistentes
 
 Table
 
@@ -41,7 +41,7 @@ Table
 | **Neo4j**           | Redes de fraude         | Graph nativo para detecção de ciclos (anéis de fraudadores); algoritmos de centralidade (PageRank, Betweenness)                  |
 
 
-### 3.4 Processamento de Stream
+### 4 Processamento de Stream
 
 Table
 
@@ -51,7 +51,7 @@ Table
 | **Kafka Connect**           | Integração dados                | Sink connectors sem código para Cassandra/Postgres; exactly-once delivery; schema evolution                                                     |
 
 
-### 3.5 Machine Learning Infrastructure
+### 5 Machine Learning Infrastructure
 
 Table
 
