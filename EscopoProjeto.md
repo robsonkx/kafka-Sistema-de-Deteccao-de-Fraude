@@ -1,3 +1,5 @@
+### Escopo ###
+
 Objetivo:
 Projetar um Sistema de Detecção de Fraude que analisa transações de cartão de crédito em tempo real e identifica atividades suspeitas. O sistema deve fornecer uma resposta imediata se a transação envolver um cartão, usuário ou site previamente identificado como fraudulento.
 
