@@ -1,5 +1,5 @@
 <img src="Assets/Diagrama.png" width="500">
 
-### Casos de Uso ###
+### Simplificado ###
 
 <img src="Assets/Simplificada.png" width="500" >
