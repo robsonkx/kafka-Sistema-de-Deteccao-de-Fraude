@@ -1,4 +1,3 @@
-markdown
 # Origem dos Dados Históricos para ML
 
 Os dados históricos são coletados principalmente de 4 fontes dentro da arquitetura:
@@ -37,7 +36,21 @@ Kafka é a origem do histórico de eventos.
 
 **Exemplo de evento:**
 
-
+```json
+{
+  "transaction_id": "tx123",
+  "card_id": "card_987",
+  "user_id": "user_456",
+  "merchant_id": "mcdonalds_001",
+  "amount": 120.50,
+  "currency": "BRL",
+  "timestamp": "2026-03-05T14:21:33",
+  "location": {
+      "lat": -23.55,
+      "lon": -46.63
+  },
+  "device_id": "iphone_123"
+}
 Esses eventos:
 
 são consumidos por Flink/Spark
@@ -49,7 +62,7 @@ são usados para gerar features
 3. Data Lake: Principal Fonte Histórica
 No diagrama aparece:
 
-**COLD PATH**  
+❄️ COLD PATH  
 Data Lake (S3/GCS)
 
 Raw logs
@@ -255,3 +268,4 @@ PostgreSQL	dados mestre
 Neo4j	relações de fraude
 Redis	features em tempo real
 Feedback humano	labels
+Code
