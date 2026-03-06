@@ -1,4 +1,7 @@
+
 # Origem dos Dados Históricos para ML
+
+## 1. Fontes de Dados Históricos
 
 Os dados históricos são coletados principalmente de 4 fontes dentro da arquitetura:
 
@@ -7,8 +10,7 @@ Os dados históricos são coletados principalmente de 4 fontes dentro da arquite
 - **Bancos operacionais** (Cassandra / PostgreSQL / Neo4j)
 - **Feedback humano** (analistas de fraude)
 
-### Fluxo simplificado
-
+### Fluxo simplificado:
 Transações → Kafka → Streaming Processing → Data Lake
 │
 ▼
@@ -20,21 +22,34 @@ Feature Store
 ▼
 Dataset de Treinamento ML
 
-Code
-
----
+text
 
 ## 2. Kafka: Primeira Fonte de Dados
 
-Kafka é a origem do histórico de eventos.
+Dentro do seu diagrama, **Kafka é a origem do histórico de eventos**.
 
-**Tópicos importantes:**
+### Tópicos importantes:
 - `transactions.raw`
 - `transactions.validated`
 - `fraud.alerts`
 - `fraud.confirmed`
 
-
+### Exemplo de evento:
+```json
+{
+  "transaction_id": "tx123",
+  "card_id": "card_987",
+  "user_id": "user_456",
+  "merchant_id": "mcdonalds_001",
+  "amount": 120.50,
+  "currency": "BRL",
+  "timestamp": "2026-03-05T14:21:33",
+  "location": {
+      "lat": -23.55,
+      "lon": -46.63
+  },
+  "device_id": "iphone_123"
+}
 Esses eventos:
 
 são consumidos por Flink/Spark
@@ -44,36 +59,31 @@ são gravados no Data Lake
 são usados para gerar features
 
 3. Data Lake: Principal Fonte Histórica
-No diagrama aparece:
+No seu diagrama aparece:
 
-❄️ COLD PATH  
+text
+❄️ COLD PATH
 Data Lake (S3/GCS)
-
-Raw logs
-
-ML datasets
-
-7 anos
+• Raw logs
+• ML datasets
+• 7 anos
+Esse é o repositório principal de histórico para ML.
 
 Estrutura típica:
-
-Code
+text
 data-lake/
    transactions/
        year=2026/
            month=03/
                day=05/
                    part-000.parquet
-
    fraud_labels/
        year=2026/
            month=03/
-
    features/
        user_features/
        card_features/
-Formatos usados:
-
+Formatos geralmente usados:
 Parquet
 
 ORC
@@ -89,7 +99,11 @@ leitura paralela
 otimizado para ML e analytics
 
 4. Feature Engineering (Streaming + Batch)
-Os dados históricos são transformados em features de ML via:
+Os dados históricos não são usados diretamente.
+
+Primeiro são transformados em features de ML.
+
+Isso acontece via:
 
 Flink Streaming
 
@@ -97,53 +111,95 @@ Spark
 
 Airflow pipelines
 
-Exemplos de features:
+Exemplos de features geradas
+Features de comportamento:
 
-Comportamento: tx_count_1h, tx_count_24h, avg_transaction_amount
+tx_count_1h
 
-Estatísticas: amount_zscore, std_transaction_amount
+tx_count_24h
 
-Geográficas: distance_last_transaction, country_change_rate
+avg_transaction_amount
 
-Device: new_device_flag, device_change_frequency
+Features estatísticas:
+
+amount_zscore
+
+std_transaction_amount
+
+Features geográficas:
+
+distance_last_transaction
+
+country_change_rate
+
+Features de device:
+
+new_device_flag
+
+device_change_frequency
 
 Exemplo final:
-
-Code
-card_id | tx_count_1h | avg_amount | geo_distance | fraud_label
+card_id	tx_count_1h	avg_amount	geo_distance	fraud_label
 5. Feature Store (Online + Offline)
-Mantém features consistentes entre treinamento e inferência.
+No diagrama aparece:
 
-Offline Store: usada para treinar modelos (ex.: training_dataset.parquet)
+text
+Feature Store (Feast/Tecton)
+Online / Offline
+Ela mantém features consistentes entre treinamento e inferência.
 
-Online Store: usada em tempo real (Redis, Cassandra, DynamoDB)
+Offline Store
+Usada para treinar modelos.
 
-Exemplo:
+Fonte: Data Lake
 
-Code
-card_123 → tx_count_last_1h = 4
+Exemplo: training_dataset.parquet
+
+Online Store
+Usada durante inferência em tempo real.
+
+Fontes:
+
+Redis
+
+Cassandra
+
+DynamoDB
+
+Exemplo: card_123 → tx_count_last_1h = 4
+
 6. Labels (Dados de Verdade)
-Labels vêm do Feedback Loop:
+Para ML aprender fraude, precisa de labels.
 
-Analista de risco → Console Web → Decisão
+Essas labels vêm do Feedback Loop.
 
+No seu diagrama:
+
+text
+Analista de risco
+Console Web
+Decisão
 Confirmar Fraude / Falso Positivo
+Quando o analista decide:
 
-Eventos gerados:
+fraud_confirmed = 1
+
+fraud_confirmed = 0
+
+Isso gera eventos:
 
 fraud.confirmed
 
 fraud.false_positive
 
-Fluxo:
-
-Code
+Esses eventos vão para:
 Kafka → Data Lake → Dataset de treinamento
+
 7. Construção do Dataset de Treino
-Pipeline típico: Airflow / Spark job
+Pipeline típico:
+Airflow / Spark job
 
 Fluxo:
-
 Ler transações do Data Lake
 
 Juntar features
@@ -153,7 +209,6 @@ Juntar labels
 Criar dataset ML
 
 Exemplo SQL:
-
 sql
 SELECT
    t.card_id,
@@ -168,11 +223,9 @@ ON t.card_id = f.card_id
 JOIN labels l
 ON t.transaction_id = l.transaction_id
 Dataset final:
-
-Code
-card_id | amount | tx_count_1h | geo_distance | fraud_label
+card_id	amount	tx_count_1h	geo_distance	fraud_label
 8. Treinamento do Modelo
-Treinamento ocorre em:
+O treinamento ocorre normalmente em:
 
 Spark ML
 
@@ -183,8 +236,7 @@ TensorFlow
 PyTorch
 
 Pipeline:
-
-Code
+text
 Data Lake
    ↓
 Feature Dataset
@@ -196,25 +248,29 @@ Model Artifact
 Model Registry
    ↓
 TF Serving / ML Service
-Exemplo de artefato:
+Exemplo de artefato: fraud_model_v14.xgboost
 
-Code
-fraud_model_v14.xgboost
 9. Atualização Contínua (Retraining)
+O modelo não é estático.
+
+Existe retraining contínuo.
+
 Estratégias comuns:
+Batch retraining
 
-Batch retraining (diário/semanal, últimos 90 dias)
+todo dia / semana
 
-Incremental learning (novos casos confirmados)
+Dataset usado: últimos 90 dias de transações
 
-Eventos usados:
+Incremental learning
 
-fraud.confirmed
+treina com novos casos confirmados
 
-fraud.false_positive
+Eventos usados: fraud.confirmed, fraud.false_positive
 
 10. Resumo do Fluxo de Dados para ML
-Code
+Fluxo completo:
+text
 POS / API
    │
    ▼
@@ -244,6 +300,8 @@ Modelo
    ▼
 Inference Service
 11. Onde exatamente o ML "busca" os dados históricos
+Em produção real, ML costuma buscar dados em:
+
 Fonte	Tipo de dado
 Kafka	eventos recentes
 Data Lake	histórico completo
@@ -252,4 +310,3 @@ PostgreSQL	dados mestre
 Neo4j	relações de fraude
 Redis	features em tempo real
 Feedback humano	labels
-Code
