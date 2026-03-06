@@ -44,6 +44,7 @@ Esses eventos:
 
 
 **COLD PATH**
+
 Data Lake (S3/GCS)
 • Raw logs
 • ML datasets
