@@ -52,9 +52,9 @@ Data Lake (S3/GCS)
 
 Esse é o repositório principal de histórico para ML.
 
-Estrutura típica:
+## Estrutura típica:
 
-data-lake/
+{ data-lake/
    transactions/
        year=2026/
            month=03/
@@ -65,8 +65,9 @@ data-lake/
            month=03/
    features/
        user_features/
-       card_features/
-Formatos geralmente usados:
+       card_features/ }
+       
+## Formatos geralmente usados:
 Parquet
 
 ORC
