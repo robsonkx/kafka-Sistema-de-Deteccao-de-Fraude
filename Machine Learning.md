@@ -44,9 +44,11 @@ Kafka é a origem do histórico de eventos no sistema.
 
 
 ## Processamento dos Eventos
+
 Consumidos por Flink/Spark
 Gravados no Data Lake
 Usados para gerar features
+
 2️⃣ Data Lake: Principal Fonte Histórica
 plain
 Copy
