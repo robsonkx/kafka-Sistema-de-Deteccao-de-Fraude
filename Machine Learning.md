@@ -11,10 +11,13 @@ Fluxo simplificado:
 
 Transações → Kafka → Streaming Processing → Data Lake
                                   │
+                                  
                          Feature Engineering
                                   │
+                                  
                           Feature Store
                                   │
+                                  
                         Dataset de Treinamento ML
 
 
