@@ -26,10 +26,7 @@ Kafka é a origem do histórico de eventos.
 
 Tópicos importantes:
 
-transactions.raw
-transactions.validated
-fraud.alerts
-fraud.confirmed
+transactions.raw / transactions.validated / fraud.alerts / fraud.confirmed
 
 Esses eventos:
 
