@@ -99,19 +99,20 @@ Para ML aprender fraude, precisa de labels.
 
 Essas labels vêm do:
 
-Feedback Loop:
-
-Analista de risco, Console Web, Decisão, Confirmar Fraude / Falso Positivo
+Feedback Loop: Analista de risco, Console Web, Decisão, Confirmar Fraude / Falso Positivo
 
 Quando o analista decide:
 
 fraud_confirmed = 1
+
 fraud_confirmed = 0
 
 Isso gera eventos:
 
 fraud.confirmed
+
 fraud.false_positive
+
 
 Esses eventos vão para:
 
