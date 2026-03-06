@@ -40,11 +40,11 @@ Tópicos importantes:
 
 Esses eventos:
 
-são consumidos por Flink/Spark
+são consumidos por **Flink/Spark**
 
-são gravados no Data Lake
+são gravados no **Data Lake**
 
-são usados para gerar features
+são usados para **gerar features**
 
 
 
