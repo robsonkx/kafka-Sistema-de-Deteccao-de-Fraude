@@ -22,7 +22,7 @@ Feature Store
 ▼
 Dataset de Treinamento ML
 
-text
+
 
 ## 2. Kafka: Primeira Fonte de Dados
 
@@ -47,7 +47,7 @@ são usados para gerar features
 3. Data Lake: Principal Fonte Histórica
 No seu diagrama aparece:
 
-text
+
 ❄️ COLD PATH
 Data Lake (S3/GCS)
 • Raw logs
