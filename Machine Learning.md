@@ -40,8 +40,7 @@ Esses eventos:
 - `são gravados no Data Lake`
 - `são usados para gerar features`
 
-3. Data Lake: Principal Fonte Histórica
-No seu diagrama aparece:
+## 3. Data Lake: Principal Fonte Histórica
 
 
 ❄️ COLD PATH
