@@ -43,11 +43,12 @@ Esses eventos:
 ## 3. Data Lake: Principal Fonte Histórica
 
 
-❄️ COLD PATH
+**COLD PATH**
 Data Lake (S3/GCS)
 • Raw logs
 • ML datasets
 • 7 anos
+
 Esse é o repositório principal de histórico para ML.
 
 Estrutura típica:
