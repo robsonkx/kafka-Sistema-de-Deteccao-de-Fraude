@@ -22,7 +22,7 @@ Transações → Kafka → Streaming Processing → Data Lake
                         Dataset de Treinamento ML
 
 
-##Kafka é a origem do histórico de eventos.
+Kafka é a origem do histórico de eventos.
 
 Tópicos importantes:
 
