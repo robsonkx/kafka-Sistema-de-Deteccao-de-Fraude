@@ -49,7 +49,7 @@ são usados para gerar features
 3. Data Lake: Principal Fonte Histórica
 No diagrama aparece:
 
-❄️ COLD PATH  
+**COLD PATH**  
 Data Lake (S3/GCS)
 
 Raw logs
