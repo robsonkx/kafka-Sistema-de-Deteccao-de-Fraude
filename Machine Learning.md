@@ -2,10 +2,10 @@
 
 Os dados históricos são coletados principalmente de 4 fontes dentro da arquitetura:
 
-1.Kafka (event stream de transações)
-2.Data Lake (histórico bruto e datasets de treino)
-3.Bancos operacionais (Cassandra / PostgreSQL / Neo4j)
-4.Feedback humano (analistas de fraude)
+-Kafka (event stream de transações)
+-Data Lake (histórico bruto e datasets de treino)
+-Bancos operacionais (Cassandra / PostgreSQL / Neo4j)
+-Feedback humano (analistas de fraude)
 
 Fluxo simplificado:
 
