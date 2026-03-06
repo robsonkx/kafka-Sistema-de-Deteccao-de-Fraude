@@ -58,6 +58,7 @@ Spark
 Airflow pipelines
 
 **Feature Store (Online + Offline)**
+
 Feature Store (Feast/Tecton)
 Online / Offline
 
