@@ -57,6 +57,7 @@ Kafka é a origem do histórico de eventos no sistema.
   },
   "device_id": "iphone_123"
 }
+
 ⚡ Processamento dos Eventos
 Consumidos por Flink/Spark
 Gravados no Data Lake
