@@ -1,23 +1,40 @@
 ## Origem dos Dados Históricos para ML
 
 Os dados históricos são coletados principalmente de 4 fontes dentro da arquitetura:
-Kafka (event stream de transações)
-Data Lake (histórico bruto e datasets de treino)
-Bancos operacionais (Cassandra / PostgreSQL / Neo4j)
-Feedback humano (analistas de fraude)
+
+1.Kafka (event stream de transações)
+2.Data Lake (histórico bruto e datasets de treino)
+3.Bancos operacionais (Cassandra / PostgreSQL / Neo4j)
+4.Feedback humano (analistas de fraude)
 
 Fluxo simplificado:
 
 Transações → Kafka → Streaming Processing → Data Lake
                                   │
-                                  
                          Feature Engineering
                                   │
-                                  
                           Feature Store
                                   │
-                                  
                         Dataset de Treinamento ML
+
+
+##Kafka é a origem do histórico de eventos.
+
+Tópicos importantes:
+
+transactions.raw
+transactions.validated
+fraud.alerts
+fraud.confirmed
+
+Esses eventos:
+
+são consumidos por Flink/Spark
+são gravados no Data Lake
+são usados para gerar features
+
+O Data Lake é a principal Fonte Histórica (repositório principal de histórico para ML)
+
 
 
 ## Detalhes de Estratégia Machine Learning
