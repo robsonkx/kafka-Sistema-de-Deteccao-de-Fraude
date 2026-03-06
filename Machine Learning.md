@@ -45,6 +45,17 @@ são usados para **gerar features**
 
 ## Detalhes de Estratégia Machine Learning
 
+Os dados históricos não são usados diretamente.
+
+Primeiro são transformados em features de ML.
+
+Isso acontece via:
+
+Flink Streaming
+Spark
+Airflow pipelines
+
+
 ### 1. Arquitetura de Dados para ML
 
 **Camadas do Data Lake:**
