@@ -25,7 +25,8 @@ Transações → Kafka → Streaming Processing → Data Lake
                         Dataset de Treinamento ML
 2. Kafka: Primeira Fonte de Dados
 
-Kafka é a origem do histórico de eventos.
+
+**Kafka** é a origem do histórico de eventos.
 
 Tópicos importantes:
 
