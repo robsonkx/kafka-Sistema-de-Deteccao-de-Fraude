@@ -52,8 +52,42 @@ Primeiro são transformados em features de ML.
 Isso acontece via:
 
 Flink Streaming
+
 Spark
+
 Airflow pipelines
+
+**Feature Store (Online + Offline)**
+Feature Store (Feast/Tecton)
+Online / Offline
+
+Ela mantém features consistentes entre treinamento e inferência
+
+**Offline Store**
+
+Usada para treinar modelos.
+
+Fonte:
+
+Data Lake
+
+Exemplo:
+
+training_dataset.parquet
+
+**Online Store**
+
+Usada durante inferência em tempo real.
+
+Fonte:
+
+Redis
+Cassandra
+DynamoDB
+
+Exemplo:
+
+card_123 → tx_count_last_1h = 4
 
 
 ### 1. Arquitetura de Dados para ML
