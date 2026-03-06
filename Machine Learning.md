@@ -1,3 +1,8 @@
+
+Markdown
+Copy
+Code
+Preview
 # 🧠 Origem dos Dados Históricos para ML
 
 ## 📊 Visão Geral das Fontes de Dados
@@ -42,7 +47,21 @@ Kafka é a origem do histórico de eventos no sistema.
 
 ### 📝 Exemplo de Evento
 
-
+```json
+{
+  "transaction_id": "tx123",
+  "card_id": "card_987",
+  "user_id": "user_456",
+  "merchant_id": "mcdonalds_001",
+  "amount": 120.50,
+  "currency": "BRL",
+  "timestamp": "2026-03-05T14:21:33",
+  "location": {
+      "lat": -23.55,
+      "lon": -46.63
+  },
+  "device_id": "iphone_123"
+}
 ⚡ Processamento dos Eventos
 Consumidos por Flink/Spark
 Gravados no Data Lake
