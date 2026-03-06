@@ -36,11 +36,9 @@ Dentro do seu diagrama, **Kafka é a origem do histórico de eventos**.
 
 Esses eventos:
 
-são consumidos por Flink/Spark
-
-são gravados no Data Lake
-
-são usados para gerar features
+- `são consumidos por Flink/Spark`
+- `são gravados no Data Lake`
+- `são usados para gerar features`
 
 3. Data Lake: Principal Fonte Histórica
 No seu diagrama aparece:
