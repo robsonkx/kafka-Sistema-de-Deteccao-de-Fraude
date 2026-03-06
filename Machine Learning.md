@@ -10,6 +10,7 @@ Os dados históricos são coletados principalmente de 4 fontes dentro da arquite
 Fluxo simplificado:
 
 Transações → Kafka → Streaming Processing → Data Lake
+
                                   │
                                   
                          Feature Engineering
