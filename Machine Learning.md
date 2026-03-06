@@ -15,24 +15,27 @@ Fluxo simplificado:
 
 Transações → Kafka → Streaming Processing → Data Lake
                                   │
-                                  ▼
+                                  
                          Feature Engineering
                                   │
-                                  ▼
+                                  
                           Feature Store
                                   │
-                                  ▼
+                                  
                         Dataset de Treinamento ML
 2. Kafka: Primeira Fonte de Dados
 
-Dentro do seu diagrama, Kafka é a origem do histórico de eventos.
+Kafka é a origem do histórico de eventos.
 
 Tópicos importantes:
 
-transactions.raw
-transactions.validated
-fraud.alerts
-fraud.confirmed
+-transactions.raw
+
+-transactions.validated
+
+-fraud.alerts
+
+-fraud.confirmed
 
 
 Esses eventos:
