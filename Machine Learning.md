@@ -93,6 +93,31 @@ card_123 → tx_count_last_1h = 4
 
 ### 1. Arquitetura de Dados para ML
 
+**Labels (Dados de Verdade)**
+
+Para ML aprender fraude, precisa de labels.
+
+Essas labels vêm do:
+
+Feedback Loop:
+
+Analista de risco, Console Web, Decisão, Confirmar Fraude / Falso Positivo
+
+Quando o analista decide:
+
+fraud_confirmed = 1
+fraud_confirmed = 0
+
+Isso gera eventos:
+
+fraud.confirmed
+fraud.false_positive
+
+Esses eventos vão para:
+
+Kafka → Data Lake → Dataset de treinamento
+
+
 **Camadas do Data Lake:**
 
 - **Bronze (Raw):**  Logs JSON de Kafka, eventos de auditoria, dumps de bancos. Retenção: 7 anos. Formato: JSON/Avro.
