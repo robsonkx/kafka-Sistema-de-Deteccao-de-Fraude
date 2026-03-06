@@ -45,8 +45,6 @@ são gravados no Data Lake
 são usados para gerar features
 
 3. Data Lake: Principal Fonte Histórica
-No seu diagrama aparece:
-
 
 ❄️ COLD PATH
 Data Lake (S3/GCS)
@@ -125,7 +123,8 @@ new_device_flag
 device_change_frequency
 
 Exemplo final:
-card_id	tx_count_1h	avg_amount	geo_distance	fraud_label
+text
+card_id | tx_count_1h | avg_amount | geo_distance | fraud_label
 5. Feature Store (Online + Offline)
 No diagrama aparece:
 
@@ -209,7 +208,8 @@ ON t.card_id = f.card_id
 JOIN labels l
 ON t.transaction_id = l.transaction_id
 Dataset final:
-card_id	amount	tx_count_1h	geo_distance	fraud_label
+text
+card_id | amount | tx_count_1h | geo_distance | fraud_label
 8. Treinamento do Modelo
 O treinamento ocorre normalmente em:
 
@@ -296,3 +296,5 @@ PostgreSQL	dados mestre
 Neo4j	relações de fraude
 Redis	features em tempo real
 Feedback humano	labels
+
+
