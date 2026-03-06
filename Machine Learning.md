@@ -1,3 +1,29 @@
+1. Origem dos Dados Históricos para ML
+
+Os dados históricos são coletados principalmente de 4 fontes dentro da arquitetura:
+
+Kafka (event stream de transações)
+
+Data Lake (histórico bruto e datasets de treino)
+
+Bancos operacionais (Cassandra / PostgreSQL / Neo4j)
+
+Feedback humano (analistas de fraude)
+
+Fluxo simplificado:
+
+Transações → Kafka → Streaming Processing → Data Lake
+                                  │
+                                  ▼
+                         Feature Engineering
+                                  │
+                                  ▼
+                          Feature Store
+                                  │
+                                  ▼
+                        Dataset de Treinamento ML
+
+
 ## Estratégia de Machine Learning
 
 ### 1. Arquitetura de Dados para ML
